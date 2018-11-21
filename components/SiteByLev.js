@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-export default class Footer extends Component {
+export default class SiteByLev extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +17,7 @@ export default class Footer extends Component {
 
   render = () => <div id="site-by-Lev">
     <p style={{display: "inline"}} onClick={() => this.inputPass()}>Сайт</p> — 
-    <a href="http://vk.com/the_sociophobic" target="_blank">Lev</a>
+    <a href="http://vk.com/the_sociophobic" target="_blank"> Lev</a>
   </div>
 }
 

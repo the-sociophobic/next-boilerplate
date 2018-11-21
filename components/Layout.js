@@ -11,7 +11,7 @@ import "../static/sass/main.sass"
 class Layout extends Component {
   constructor(props) {
     super(props)
-    this.props = {
+    this.state = {
       W: 0,
       H: 0,
       scrollX: 0,
@@ -51,11 +51,11 @@ class Layout extends Component {
   render = () => (
     <div className="App">
       <Head title="React isomorphic App" />
-      <Header {...this.props} />
+      <Header {...this.state} />
       <main>
         {this.props.children}
       </main>
-      <Footer {...this.props} />
+      <Footer {...this.state} />
     </div>
   )
 }

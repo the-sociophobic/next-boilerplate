@@ -1,0 +1,13 @@
+@import '../variables.sass'
+@import '../base.sass'
+
+footer
+  width: 100vw
+  display: table
+  padding: 20px 0
+  &.desktop
+    @media (max-width: $tablet-max-width)
+      @include invisible
+  &.mobile
+    @media (min-width: $tablet-max-width)
+      @include invisible

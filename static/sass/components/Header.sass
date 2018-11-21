@@ -1,0 +1,17 @@
+@import '../variables.sass'
+@import '../base.sass'
+
+header
+  position: absolute
+  top: 0
+  left: 0
+  height: 160px
+  width: 100vw
+  z-index: 1000
+  &.desktop
+    @media (max-width: $tablet-max-width)
+      @include invisible
+  &.mobile
+    @media (min-width: $tablet-max-width)
+      @include invisible
+    position: fixed
