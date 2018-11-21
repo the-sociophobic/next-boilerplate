@@ -11,7 +11,97 @@ header
   &.desktop
     @media (max-width: $tablet-max-width)
       @include invisible
+    padding: 60px 0 0
+    .container
+      padding-right: 250px
+    .Social
+      float: right
+      margin-top: 15px
+    a.Phone
+      position: absolute
+      top: 0
+      right: 0
+    .nav-links
+      $nav-links-height: 400px
+      width: 195px
+      height: $nav-links-height
+      position: absolute
+      bottom: -50px - $nav-links-height
+      left: 10px
+      button.link
+        width: 100%
+        margin-bottom: 20px
+        color: white
+        font-size: $def-font-size * pow($font-ratio, 1)
+        text-align: left
   &.mobile
+    position: fixed
+    top: 0
+    left: 0
+  &.mobile, .header-links
+    .hamburger
+      background-color: #65ca71
+      float: right
+    a.Phone
+      float: right
     @media (min-width: $tablet-max-width)
       @include invisible
+    @media (max-width: $tablet-max-width)
+      padding: 40px 0 40px 15px
+      .hamburger
+        width: 66px
+    @media (max-width: $phone-max-width)
+      height: 95px
+      padding: 40px 0 0 10px
+      .hamburger
+        width: 46px
+        height: 40px
+        padding: 8px 8px
+    .header-links
+      position: fixed
+      top: 0
+      left: 0
+      width: 100vw
+      height: 100vh
+      background: #f8f8f8
+      .row
+        margin-bottom: 40px
+      button.link
+        display: block
+        width: 100%
+        line-height: $def-font-size * pow($font-ratio, 1)
+        font-size: $def-font-size * pow($font-ratio, 1)
+        margin-bottom: 10px
+        color: #313636
+        text-align: center
+      .social-row
+        position: absolute
+        width: 100%
+        left: 0
+        bottom: 80px
+        .Social
+          margin: auto
+  .fixed-links
+    $fixed-links-height: 95px
     position: fixed
+    top: -$fixed-links-height
+    left: 0
+    width: 100%
+    height: $fixed-links-height
+    background: white
+    transition: top .2s
+    border-bottom: 3px solid grey
+    &.shown
+      top: 0
+    button
+      height: $fixed-links-height
+      line-height: $fixed-links-height
+      float: left
+      margin-right: 20px
+    button.logo
+      margin-top: 8px
+    a.Phone
+      height: $fixed-links-height
+      line-height: $fixed-links-height
+    .Social
+      margin-top: 35px

@@ -1,9 +1,9 @@
 @import 'variables.sass'
 @import 'base.sass'
 
-// @font-face
-//   font-family: 'Font'
-//   src: url("./../fonts/Font.ttf")
+@font-face
+  font-family: 'Rostov'
+  src: url("./../fonts/Rostov.ttf")
 
 *
   font-family: Arial, Helvetica, sans-serif
@@ -18,3 +18,81 @@ h1, h2, h3, h4, h5, h6
 .container
   max-width: $container-width
   padding: 0 $container-padding
+
+body
+  background: url('./../img/blue.png')
+button.logo
+  background: url('./../img/logo2.svg')
+button.logo.grey
+  background: url('./../img/logo2_grey.svg')
+button.logo, button.logo.grey
+  width: 195px
+  height: 80px
+  background-repeat: no-repeat
+  background-size: contain
+  @media (max-width: $tablet-max-width)
+    width: 115px
+    height: 90px
+  @media (max-width: $phone-max-width)
+    width: 80px
+    height: 60px
+article.panel
+  width: 100vw
+  height: 100vh
+  overflow: hidden
+  position: relative
+  & > h3
+    margin-top: 150px
+  &.sphere-billboard
+    img.Sphere, #SphereCanvas, #SphereCanvas2
+      width: 40vw
+      height: 40vw
+      position: absolute
+      z-index: -1
+    img.big-logo
+      height: auto
+      z-index: 100
+    .slogan
+      font-family: 'Rostov', sans-serif
+      text-align: center
+      text-transform: uppercase
+      color: #BBBBBB
+      line-height: 1.25
+      letter-spacing: 15px
+      font-size: 60px
+      z-index: 100
+    .desktop
+      @media (max-width: $tablet-max-width)
+        @include invisible
+      img.big-logo
+        position: absolute
+        width: 50vw
+        top: 30vh
+      .slogan
+        position: absolute
+        width: 70vw
+        top: 50vh
+    .mobile
+      display: table
+      width: 100vw
+      @media (min-width: $tablet-max-width)
+        @include invisible
+      img.Sphere, #SphereCanvas, #SphereCanvas2
+        left: 30vw
+        top: 20vh
+      img.big-logo
+        position: relative
+        width: calc(100vw - 50px)
+        margin-left: 25px
+        margin-top: 40vh
+      .slogan
+        position: relative
+        width: calc(100vw - 50px)
+        margin-left: 25px
+        margin-top: 5vh
+        letter-spacing: 8px
+        @media (max-width: $tablet-max-width)
+          font-size: 40px
+        @media (max-width: $phone-max-width)
+          font-size: 30px
+

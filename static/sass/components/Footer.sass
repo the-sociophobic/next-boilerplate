@@ -2,12 +2,41 @@
 @import '../base.sass'
 
 footer
+  background: white
+  padding: 20px 0 30px
+  position: relative
   width: 100vw
   display: table
-  padding: 20px 0
+  button, .row
+    width: 100%
+    text-align: left
+    margin-bottom: 10px
+  .Social
+    margin-top: 20px
+  &::after
+    position: absolute
+    content: ""
+    top: -50px
+    left: 0
+    height: 50px
+    width: 100%
+    background: url("./../../img/edge_white_.png")
+    background-size: contain
+    background-position: bottom
+    background-repeat-y: no-repeat
   &.desktop
     @media (max-width: $tablet-max-width)
       @include invisible
   &.mobile
     @media (min-width: $tablet-max-width)
       @include invisible
+    .container
+      padding: 0 30px
+    .logo
+      width: 100% !important
+      height: 180px !important
+      background-position: center !important
+      margin: 10px 0 40px
+    .Social
+      margin: auto
+      margin-top: 20px
