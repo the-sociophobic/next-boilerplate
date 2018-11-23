@@ -2,11 +2,14 @@ import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 
 import Layout from '../components/Layout.js'
-import SphereBillboard from '../components/SphereBillboard.js'
+import AppearContainer from '../components/panels/AppearContainer.js'
+import IndexPanel from '../components/panels/IndexPanel.js'
 
 const Index = (props) => (
   <Layout>
-    <SphereBillboard />
+    <AppearContainer>
+      <IndexPanel />
+    </AppearContainer>
     {/* <ul>
       {props.shows.map(({show}) => (
         <li key={show.id}>

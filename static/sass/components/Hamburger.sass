@@ -5,12 +5,23 @@
  * @site https://jonsuh.com/hamburgers
  * @link https://github.com/jonsuh/hamburgers
  */
-@import '../variables.sass'
+
+//some variables u can define and include AFTER definition in this file
+$hamburger-color: white
+$hamburger-background: black
+$hamburger-width: 70px
+$hamburger-height: 60px
+$hamburger-padding: 15px
+$hamburger-thickness: 4px
+$hamburger-between: ($hamburger-height - $hamburger-padding * 2 - $hamburger-thickness) / 2
+
+@import './Header.sass'
 
 .hamburger
-  width: 70px
-  height: 60px
-  padding: 15px 15px
+  width: $hamburger-width
+  height: $hamburger-height
+  padding: $hamburger-padding
+  background-color: $hamburger-background
   display: inline-block
   cursor: pointer
   transition-property: opacity, filter
@@ -19,7 +30,6 @@
   font: inherit
   color: inherit
   text-transform: none
-  background-color: transparent
   border: 0
   margin: 0
   overflow: visible
@@ -37,28 +47,28 @@
   width: 100%
   height: 100%
   display: inline-block
-  position: relative 
+  position: relative
 
 .hamburger-inner 
   display: block
   top: 50%
-  margin-top: -2px 
+  margin-top: -$hamburger-thickness / 2
   &, &::before, &::after
     width: 100%
-    height: 4px
+    height: $hamburger-thickness
     background-color: $hamburger-color
-    border-radius: 4px
+    border-radius: $hamburger-thickness
     position: absolute
     transition-property: transform
     transition-duration: 0.15s
-    transition-timing-function: ease 
+    transition-timing-function: ease
   &::before, &::after 
     content: ""
     display: block 
   &::before
-    top: -10px
+    top: -$hamburger-between
   &::after
-    bottom: -10px
+    bottom: -$hamburger-between
 
 /*
    * 3DX
@@ -75,9 +85,9 @@
   background-color: transparent !important
   transform: rotateY(180deg) 
 .hamburger--3dx.is-active .hamburger-inner::before 
-  transform: translate3d(0, 10px, 0) rotate(45deg) 
+  transform: translate3d(0, $hamburger-between, 0) rotate(45deg) 
 .hamburger--3dx.is-active .hamburger-inner::after 
-  transform: translate3d(0, -10px, 0) rotate(-45deg) 
+  transform: translate3d(0, -$hamburger-between, 0) rotate(-45deg) 
 
 /*
    * 3DX Reverse
@@ -94,9 +104,9 @@
   background-color: transparent !important
   transform: rotateY(-180deg) 
 .hamburger--3dx-r.is-active .hamburger-inner::before 
-  transform: translate3d(0, 10px, 0) rotate(45deg) 
+  transform: translate3d(0, $hamburger-between, 0) rotate(45deg) 
 .hamburger--3dx-r.is-active .hamburger-inner::after 
-  transform: translate3d(0, -10px, 0) rotate(-45deg) 
+  transform: translate3d(0, -$hamburger-between, 0) rotate(-45deg) 
 
 /*
    * 3DY
@@ -113,9 +123,9 @@
   background-color: transparent !important
   transform: rotateX(-180deg) 
 .hamburger--3dy.is-active .hamburger-inner::before 
-  transform: translate3d(0, 10px, 0) rotate(45deg) 
+  transform: translate3d(0, $hamburger-between, 0) rotate(45deg) 
 .hamburger--3dy.is-active .hamburger-inner::after 
-  transform: translate3d(0, -10px, 0) rotate(-45deg) 
+  transform: translate3d(0, -$hamburger-between, 0) rotate(-45deg) 
 
 /*
    * 3DY Reverse
@@ -132,9 +142,9 @@
   background-color: transparent !important
   transform: rotateX(180deg) 
 .hamburger--3dy-r.is-active .hamburger-inner::before 
-  transform: translate3d(0, 10px, 0) rotate(45deg) 
+  transform: translate3d(0, $hamburger-between, 0) rotate(45deg) 
 .hamburger--3dy-r.is-active .hamburger-inner::after 
-  transform: translate3d(0, -10px, 0) rotate(-45deg) 
+  transform: translate3d(0, -$hamburger-between, 0) rotate(-45deg) 
 
 /*
    * 3DXY
@@ -151,9 +161,9 @@
   background-color: transparent !important
   transform: rotateX(180deg) rotateY(180deg) 
 .hamburger--3dxy.is-active .hamburger-inner::before 
-  transform: translate3d(0, 10px, 0) rotate(45deg) 
+  transform: translate3d(0, $hamburger-between, 0) rotate(45deg) 
 .hamburger--3dxy.is-active .hamburger-inner::after 
-  transform: translate3d(0, -10px, 0) rotate(-45deg) 
+  transform: translate3d(0, -$hamburger-between, 0) rotate(-45deg) 
 
 /*
    * 3DXY Reverse
@@ -170,9 +180,9 @@
   background-color: transparent !important
   transform: rotateX(180deg) rotateY(180deg) rotateZ(-180deg) 
 .hamburger--3dxy-r.is-active .hamburger-inner::before 
-  transform: translate3d(0, 10px, 0) rotate(45deg) 
+  transform: translate3d(0, $hamburger-between, 0) rotate(45deg) 
 .hamburger--3dxy-r.is-active .hamburger-inner::after 
-  transform: translate3d(0, -10px, 0) rotate(-45deg) 
+  transform: translate3d(0, -$hamburger-between, 0) rotate(-45deg) 
 
 /*
    * Arrow
@@ -203,12 +213,12 @@
 
 .hamburger--arrowalt.is-active .hamburger-inner::before 
   top: 0
-  transform: translate3d(-8px, -10px, 0) rotate(-45deg) scale(0.7, 1)
+  transform: translate3d(-8px, -$hamburger-between, 0) rotate(-45deg) scale(0.7, 1)
   transition: top 0.1s ease, transform 0.1s 0.1s cubic-bezier(0.895, 0.03, 0.685, 0.22) 
 
 .hamburger--arrowalt.is-active .hamburger-inner::after 
   bottom: 0
-  transform: translate3d(-8px, 10px, 0) rotate(45deg) scale(0.7, 1)
+  transform: translate3d(-8px, $hamburger-between, 0) rotate(45deg) scale(0.7, 1)
   transition: bottom 0.1s ease, transform 0.1s 0.1s cubic-bezier(0.895, 0.03, 0.685, 0.22) 
 
 /*
@@ -222,12 +232,12 @@
 
 .hamburger--arrowalt-r.is-active .hamburger-inner::before 
   top: 0
-  transform: translate3d(8px, -10px, 0) rotate(45deg) scale(0.7, 1)
+  transform: translate3d(8px, -$hamburger-between, 0) rotate(45deg) scale(0.7, 1)
   transition: top 0.1s ease, transform 0.1s 0.1s cubic-bezier(0.895, 0.03, 0.685, 0.22) 
 
 .hamburger--arrowalt-r.is-active .hamburger-inner::after 
   bottom: 0
-  transform: translate3d(8px, 10px, 0) rotate(-45deg) scale(0.7, 1)
+  transform: translate3d(8px, $hamburger-between, 0) rotate(-45deg) scale(0.7, 1)
   transition: bottom 0.1s ease, transform 0.1s 0.1s cubic-bezier(0.895, 0.03, 0.685, 0.22) 
 
 /*
@@ -275,13 +285,13 @@
   transition-delay: 0.13s
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19) 
 .hamburger--collapse .hamburger-inner::after 
-  top: -20px
+  top: -$hamburger-between * 2
   transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), opacity 0.1s linear 
 .hamburger--collapse .hamburger-inner::before 
   transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19) 
 
 .hamburger--collapse.is-active .hamburger-inner 
-  transform: translate3d(0, -10px, 0) rotate(-45deg)
+  transform: translate3d(0, -$hamburger-between, 0) rotate(-45deg)
   transition-delay: 0.22s
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1) 
 .hamburger--collapse.is-active .hamburger-inner::after 
@@ -303,13 +313,13 @@
   transition-delay: 0.13s
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19) 
 .hamburger--collapse-r .hamburger-inner::after 
-  top: -20px
+  top: -$hamburger-between * 2
   transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), opacity 0.1s linear 
 .hamburger--collapse-r .hamburger-inner::before 
   transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19) 
 
 .hamburger--collapse-r.is-active .hamburger-inner 
-  transform: translate3d(0, -10px, 0) rotate(45deg)
+  transform: translate3d(0, -$hamburger-between, 0) rotate(45deg)
   transition-delay: 0.22s
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1) 
 .hamburger--collapse-r.is-active .hamburger-inner::after 
@@ -329,20 +339,20 @@
   transition-duration: 0.275s
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55) 
 .hamburger--elastic .hamburger-inner::before 
-  top: 10px
+  top: $hamburger-between
   transition: opacity 0.125s 0.275s ease 
 .hamburger--elastic .hamburger-inner::after 
-  top: 20px
+  top: $hamburger-between * 2
   transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55) 
 
 .hamburger--elastic.is-active .hamburger-inner 
-  transform: translate3d(0, 10px, 0) rotate(135deg)
+  transform: translate3d(0, $hamburger-between, 0) rotate(135deg)
   transition-delay: 0.075s 
 .hamburger--elastic.is-active .hamburger-inner::before 
   transition-delay: 0s
   opacity: 0 
 .hamburger--elastic.is-active .hamburger-inner::after 
-  transform: translate3d(0, -20px, 0) rotate(-270deg)
+  transform: translate3d(0, -$hamburger-between * 2, 0) rotate(-270deg)
   transition-delay: 0.075s 
 
 /*
@@ -353,20 +363,20 @@
   transition-duration: 0.275s
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55) 
 .hamburger--elastic-r .hamburger-inner::before 
-  top: 10px
+  top: $hamburger-between
   transition: opacity 0.125s 0.275s ease 
 .hamburger--elastic-r .hamburger-inner::after 
-  top: 20px
+  top: $hamburger-between * 2
   transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55) 
 
 .hamburger--elastic-r.is-active .hamburger-inner 
-  transform: translate3d(0, 10px, 0) rotate(-135deg)
+  transform: translate3d(0, $hamburger-between, 0) rotate(-135deg)
   transition-delay: 0.075s 
 .hamburger--elastic-r.is-active .hamburger-inner::before 
   transition-delay: 0s
   opacity: 0 
 .hamburger--elastic-r.is-active .hamburger-inner::after 
-  transform: translate3d(0, -20px, 0) rotate(270deg)
+  transform: translate3d(0, -$hamburger-between * 2, 0) rotate(270deg)
   transition-delay: 0.075s 
 
 /*
@@ -380,7 +390,7 @@
   left: 0
   transition: transform 0.125s cubic-bezier(0.6, 0.04, 0.98, 0.335), top 0.05s 0.125s linear, left 0.125s 0.175s ease-in 
 .hamburger--emphatic .hamburger-inner::after 
-  top: 10px
+  top: $hamburger-between
   right: 0
   transition: transform 0.125s cubic-bezier(0.6, 0.04, 0.98, 0.335), top 0.05s 0.125s linear, right 0.125s 0.175s ease-in 
 .hamburger--emphatic.is-active .hamburger-inner 
@@ -409,7 +419,7 @@
   left: 0
   transition: transform 0.125s cubic-bezier(0.6, 0.04, 0.98, 0.335), top 0.05s 0.125s linear, left 0.125s 0.175s ease-in 
 .hamburger--emphatic-r .hamburger-inner::after 
-  top: 10px
+  top: $hamburger-between
   right: 0
   transition: transform 0.125s cubic-bezier(0.6, 0.04, 0.98, 0.335), top 0.05s 0.125s linear, right 0.125s 0.175s ease-in 
 .hamburger--emphatic-r.is-active .hamburger-inner 
@@ -448,21 +458,21 @@
    */
 .hamburger--slider .hamburger-inner 
   top: 2px 
-.hamburger--slider .hamburger-inner::before 
-  top: 10px
-  transition-property: transform, opacity
-  transition-timing-function: ease
-  transition-duration: 0.15s 
-.hamburger--slider .hamburger-inner::after 
-  top: 20px 
+  &::before 
+    top: $hamburger-between
+    transition-property: transform, opacity
+    transition-timing-function: ease
+    transition-duration: 0.15s 
+  &::after 
+    top: $hamburger-between * 2 
 
-.hamburger--slider.is-active .hamburger-inner 
-  transform: translate3d(0, 10px, 0) rotate(45deg) 
-.hamburger--slider.is-active .hamburger-inner::before 
-  transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0)
-  opacity: 0 
-.hamburger--slider.is-active .hamburger-inner::after 
-  transform: translate3d(0, -20px, 0) rotate(-90deg) 
+.hamburger--slider.is-active .hamburger-inner
+  transform: translate3d(0, $hamburger-between, 0) rotate(45deg)
+  &::before
+    transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0)
+    opacity: 0
+  &::after
+    transform: translate3d(0, -$hamburger-between * 2, 0) rotate(-90deg)
 
 /*
    * Slider Reverse
@@ -470,20 +480,20 @@
 .hamburger--slider-r .hamburger-inner 
   top: 2px 
 .hamburger--slider-r .hamburger-inner::before 
-  top: 10px
+  top: $hamburger-between
   transition-property: transform, opacity
   transition-timing-function: ease
   transition-duration: 0.15s 
 .hamburger--slider-r .hamburger-inner::after 
-  top: 20px 
+  top: $hamburger-between * 2 
 
 .hamburger--slider-r.is-active .hamburger-inner 
-  transform: translate3d(0, 10px, 0) rotate(-45deg) 
+  transform: translate3d(0, $hamburger-between, 0) rotate(-45deg) 
 .hamburger--slider-r.is-active .hamburger-inner::before 
   transform: rotate(45deg) translate3d(5.71429px, -6px, 0)
   opacity: 0 
 .hamburger--slider-r.is-active .hamburger-inner::after 
-  transform: translate3d(0, -20px, 0) rotate(90deg) 
+  transform: translate3d(0, -$hamburger-between * 2, 0) rotate(90deg) 
 
 /*
    * Spin
@@ -540,10 +550,10 @@
   top: 2px
   transition: background-color 0s 0.13s linear 
 .hamburger--spring .hamburger-inner::before 
-  top: 10px
+  top: $hamburger-between
   transition: top 0.1s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19) 
 .hamburger--spring .hamburger-inner::after 
-  top: 20px
+  top: $hamburger-between * 2
   transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19) 
 
 .hamburger--spring.is-active .hamburger-inner 
@@ -552,11 +562,11 @@
 .hamburger--spring.is-active .hamburger-inner::before 
   top: 0
   transition: top 0.1s 0.15s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1)
-  transform: translate3d(0, 10px, 0) rotate(45deg) 
+  transform: translate3d(0, $hamburger-between, 0) rotate(45deg) 
 .hamburger--spring.is-active .hamburger-inner::after 
   top: 0
   transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1)
-  transform: translate3d(0, 10px, 0) rotate(-45deg) 
+  transform: translate3d(0, $hamburger-between, 0) rotate(-45deg) 
 
 /*
    * Spring Reverse
@@ -568,13 +578,13 @@
   transition-delay: 0s
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19) 
 .hamburger--spring-r .hamburger-inner::after 
-  top: -20px
+  top: -$hamburger-between * 2
   transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), opacity 0s linear 
 .hamburger--spring-r .hamburger-inner::before 
   transition: top 0.1s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19) 
 
 .hamburger--spring-r.is-active .hamburger-inner 
-  transform: translate3d(0, -10px, 0) rotate(-45deg)
+  transform: translate3d(0, -$hamburger-between, 0) rotate(-45deg)
   transition-delay: 0.22s
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1) 
 .hamburger--spring-r.is-active .hamburger-inner::after 

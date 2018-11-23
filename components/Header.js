@@ -54,8 +54,8 @@ class Header extends Component {
           </div>
         </header>
         <header className="mobile">
-          <div className="row">
-            {Logo}
+          {Logo}
+          <div className="column right">
             <Hamburger
               className="hamburger--slider"
               value={this.state.showMobileMenu}
@@ -63,22 +63,17 @@ class Header extends Component {
             />
             <Phone number="+79217406762" />
           </div>
-          {!this.state.showMobileMenu ? "" :
-            <div className="header-links">
-              <div className="row">
-                {LogoGrey}
-                <Hamburger
-                  className="hamburger--slider"
-                  value={this.state.showMobileMenu}
-                  onClick={() => this.setState({showMobileMenu: !this.state.showMobileMenu})}
-                />
-                <Phone number="+79217406762" />
+        {
+            !this.state.showMobileMenu ? "" :
+              <div className="header-links">
+                <div className="row">
+                  {LogoGrey}
+                </div>
+                {mappedRoutes}
+                <div className="social-row">
+                  <Social links={["vk.com", "instagram.com"]}/>
+                </div>
               </div>
-              {mappedRoutes}
-              <div className="social-row">
-                <Social links={["vk.com", "instagram.com"]}/>
-              </div>
-            </div>
           }
         </header>
       </div>

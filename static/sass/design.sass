@@ -44,7 +44,11 @@ article.panel
   & > h3
     margin-top: 150px
   &.sphere-billboard
-    img.Sphere, #SphereCanvas, #SphereCanvas2
+    #SphereCanvas
+      width: 100%
+      height: 100%
+      position: relative
+    img.Sphere, .Sphere-container
       width: 40vw
       height: 40vw
       position: absolute
@@ -77,9 +81,10 @@ article.panel
       width: 100vw
       @media (min-width: $tablet-max-width)
         @include invisible
-      img.Sphere, #SphereCanvas, #SphereCanvas2
+      img.Sphere, .Sphere-container
         left: 30vw
         top: 20vh
+        position: absolute
       img.big-logo
         position: relative
         width: calc(100vw - 50px)

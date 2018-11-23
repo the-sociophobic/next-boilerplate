@@ -1,6 +1,8 @@
 @import '../variables.sass'
 @import '../base.sass'
 
+$hamburger-background: #65ca71
+
 header
   position: absolute
   top: 0
@@ -39,11 +41,11 @@ header
     top: 0
     left: 0
   &.mobile, .header-links
-    .hamburger
-      background-color: #65ca71
+    .hamburger, a.Phone
       float: right
-    a.Phone
-      float: right
+    .column
+      z-index: 10001
+      position: relative
     @media (min-width: $tablet-max-width)
       @include invisible
     @media (max-width: $tablet-max-width)
@@ -55,8 +57,11 @@ header
       padding: 40px 0 0 10px
       .hamburger
         width: 46px
-        height: 40px
-        padding: 8px 8px
+        height: 44px
+        padding: 8px
+        float: right
+        .hamburger-inner
+          margin-top: -3px
     .header-links
       position: fixed
       top: 0
@@ -84,20 +89,20 @@ header
   .fixed-links
     $fixed-links-height: 95px
     position: fixed
-    top: -$fixed-links-height
+    top: -$fixed-links-height - 3px
     left: 0
     width: 100%
     height: $fixed-links-height
     background: white
     transition: top .2s
-    border-bottom: 3px solid grey
+    outline: 3px solid grey
     &.shown
       top: 0
     button
       height: $fixed-links-height
       line-height: $fixed-links-height
       float: left
-      margin-right: 20px
+      margin-right: 40px
     button.logo
       margin-top: 8px
     a.Phone
