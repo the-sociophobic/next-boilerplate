@@ -1,6 +1,18 @@
 export default [
   {
-    link: "",
-    name: "",
+    link: "/",
+    name: "Театры",
+  },
+  {
+    link: "/plays",
+    name: "Постановки",
+  },
+  {
+    link: "/stats",
+    name: "Статистика",
+  },
+  {
+    link: "/cart",
+    name: "Корзина",
   },
 ]

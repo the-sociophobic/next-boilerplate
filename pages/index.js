@@ -1,12 +1,22 @@
+import {Component} from 'react'
 import Layout from '../components/Layout.js'
 import Link from 'next/link'
-import fetch from 'isomorphic-unfetch'
+import { db } from '../utils/utils'
 
-const Index = (props) => (
-  <Layout>
-    <div className="container">
-      <h4>Batman TV Shows</h4>
-      <ul>
+class Index extends Component {
+  static async getInitialProps() {
+    const data = await db('SELECT * FROM THEATERS')
+    const users = await db('SELECT * FROM users')
+    return {
+      shows: data,
+      users: users
+    }
+  }
+  
+  render = () => (
+    <Layout users={this.props.users}>
+      <h5>Театры</h5>
+      {/* <ul>
         {props.shows.map(({show}) => (
           <li key={show.id}>
             <Link as={`/p/${show.id}`} href={`/post?id=${show.id}`}>
@@ -14,20 +24,10 @@ const Index = (props) => (
             </Link>
           </li>
         ))}
-      </ul>
-    </div>
-  </Layout>
-)
-
-Index.getInitialProps = async function() {
-  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
-  const data = await res.json()
-
-  console.log(`Show data fetched. Count: ${data.length}`)
-
-  return {
-    shows: data
-  }
+      </ul> */}
+      {this.props.shows.length}
+    </Layout>
+  )
 }
 
 export default Index

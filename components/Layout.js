@@ -51,9 +51,11 @@ class Layout extends Component {
   render = () => (
     <div className="App">
       <Head title="React isomorphic App" />
-      <Header {...this.state} />
+      <Header {...this.state} users={this.props.users} />
       <main>
-        {this.props.children}
+        <div className="container">
+          {this.props.children}
+        </div>
       </main>
       <Footer {...this.state} />
     </div>

@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-unfetch'
+
 export const capitalize = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
@@ -43,4 +45,20 @@ export const getPlatform = () => {
     return "iOS"
 
   return "Web"
+}
+
+export const randomString = (length) => {
+  var text = ""
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+  for (var i = 0; i < length; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length))
+
+  return text
+}
+
+export const db = async (query) => {
+  const res = await fetch('http://localhost:3000/db?query=' + query)
+  console.log(res)
+  return res.json()
 }

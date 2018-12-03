@@ -2,16 +2,21 @@
 @import '../base.sass'
 
 header
-  position: absolute
+  // position: absolute
   top: 0
   left: 0
-  height: 160px
+  height: 80px
+  padding-top: 24px
   width: 100vw
   z-index: 1000
-  &.desktop
-    @media (max-width: $tablet-max-width)
-      @include invisible
-  &.mobile
-    @media (min-width: $tablet-max-width)
-      @include invisible
-    position: fixed
+  a
+    padding: 0 20px
+    line-height: 36px
+    margin: 0 5px
+    display: block
+    float: left
+    font-family: 'NotoSansBold', sans-serif;
+    &.active, &:hover
+      background: $orange
+  input[type="date"], select
+    width: 100%

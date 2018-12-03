@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Link from 'next/link'
+import { db } from '../utils/utils'
 
 import SiteByLev from './SiteByLev'
 
@@ -9,14 +10,11 @@ class Footer extends Component {
   render() {
     return (
       <div>
-        <footer className="desktop">
+        <footer>
           <div className="container">
-            <SiteByLev />
-          </div>
-        </footer>
-        <footer className="mobile">
-          <div className="container">
-            <SiteByLev />
+            <div className="column right">
+              <SiteByLev />
+            </div>
           </div>
         </footer>
       </div>
